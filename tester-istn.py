@@ -22,7 +22,7 @@ def batchCustom(source, target, resampler_img):
   if resampler_img:
     source = resampler_img(source)
     target = resampler_img(target)
-  print(source.GetSize())
+  print(len(source.GetSize()))
   if len(source.GetSize()) == 3:
       source.SetDirection((1, 0, 0, 0, 1, 0, 0, 0, 1))
       target.SetDirection((1, 0, 0, 0, 1, 0, 0, 0, 1))

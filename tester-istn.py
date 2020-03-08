@@ -65,12 +65,13 @@ def align(args):
   scansCSVPath = args.scansCSVPath
   itnPath = args.itnPath
   stnPath = args.stnPath
+  size = args.size
 
   # set up the ISTN framework skeleton
   use_cuda = torch.cuda.is_available()
   device = torch.device("cuda:" + args.dev if use_cuda else "cpu")
   itn = ITN2D(input_channels=1).to(device)
-  stn = STN2D(input_size=[256, 256], input_channels=2, device=device).to(device)
+  stn = STN2D(input_size=size, input_channels=2, device=device).to(device)
 
   # load ISTN weights to make working model
   itn.load_state_dict(torch.load(itnPath))
@@ -81,7 +82,7 @@ def align(args):
   stn.eval()
 
   # initialize a resampler (whatever that is???)
-  resampler_img = Resampler( [1,1], [256, 256])
+  resampler_img = Resampler( [1,1], size)
 
   # this will store the images in alignment
   alignedImages = []
@@ -130,6 +131,7 @@ if __name__ == '__main__':
   parser.add_argument('--scansCSVPath', default="", help='path to csv of scans')
   parser.add_argument('--itnPath', default="", help='path to itn')
   parser.add_argument('--stnPath', default="", help='path to stn')
+  parser.add_argument('--size', default="", help="size of image ")
   
   # align!
   args = parser.parse_args()

@@ -131,7 +131,7 @@ if __name__ == '__main__':
   parser.add_argument('--scansCSVPath', default="", help='path to csv of scans')
   parser.add_argument('--itnPath', default="", help='path to itn')
   parser.add_argument('--stnPath', default="", help='path to stn')
-  parser.add_argument('--size', default="", help="size of image ",type=int)
+  parser.add_argument('--size', default="", help="size of image ",type=int, nargs=2)
   
   # align!
   args = parser.parse_args()

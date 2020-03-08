@@ -18,17 +18,12 @@ import argparse
 
 def batchCustom(source, target, resampler_img):
 
-  # other stuff copied from istn-reg code
+  # stuff copied from istn-reg.py code
   if resampler_img:
     source = resampler_img(source)
     target = resampler_img(target)
-  print(len(source.GetSize()))
-  if len(source.GetSize()) == 3:
-      source.SetDirection((1, 0, 0, 0, 1, 0, 0, 0, 1))
-      target.SetDirection((1, 0, 0, 0, 1, 0, 0, 0, 1))
-  else: 
-      source.SetDirection((1, 0, 0, 1))
-      target.SetDirection((1, 0, 0, 1))
+  source.SetDirection((1, 0, 0, 1))
+  target.SetDirection((1, 0, 0, 1))
   source.SetOrigin(np.zeros(len(source.GetOrigin())))
   target.SetOrigin(np.zeros(len(target.GetOrigin())))
 

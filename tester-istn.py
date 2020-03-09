@@ -20,13 +20,13 @@ from PIL import Image
 def batchCustom(source, target, resampler_img):
 
   # stuff copied from istn-reg.py code
-  if resampler_img:
-    source = resampler_img(source)
-    target = resampler_img(target)
-  source.SetDirection((1, 0, 0, 1))
-  target.SetDirection((1, 0, 0, 1))
-  source.SetOrigin(np.zeros(len(source.GetOrigin())))
-  target.SetOrigin(np.zeros(len(target.GetOrigin())))
+  # if resampler_img:
+  #   source = resampler_img(source)
+  #   target = resampler_img(target)
+  # source.SetDirection((1, 0, 0, 1))
+  # target.SetDirection((1, 0, 0, 1))
+  # source.SetOrigin(np.zeros(len(source.GetOrigin())))
+  # target.SetOrigin(np.zeros(len(target.GetOrigin())))
 
   # img1 = Image.fromarray(sitk.GetArrayFromImage(source), 'RGB')
   # img1.save('source.png')

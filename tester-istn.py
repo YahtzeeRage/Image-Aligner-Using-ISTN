@@ -14,6 +14,7 @@ import numpy as np
 import pickle
 import cv2
 import argparse
+from PIL import Image
 #initialize istn
 
 def batchCustom(source, target, resampler_img):
@@ -26,6 +27,11 @@ def batchCustom(source, target, resampler_img):
   target.SetDirection((1, 0, 0, 1))
   source.SetOrigin(np.zeros(len(source.GetOrigin())))
   target.SetOrigin(np.zeros(len(target.GetOrigin())))
+
+  # img1 = Image.fromarray(sitk.GetArrayFromImage(source), 'RGB')
+  # img1.save('source.png')
+  # img2 = Image.fromarray(sitk.GetArrayFromImage(target), 'RGB')
+  # img2.show('target.png')
 
   # make images torch friendly
   sample = {'source': torch.from_numpy(sitk.GetArrayFromImage(source)).unsqueeze(0), 
